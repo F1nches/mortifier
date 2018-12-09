@@ -2,7 +2,7 @@
 
     <div class="color-menu-wrapper">
       <div class="color-options-container">
-        <div class="color-option" v-for="color in colors" :style="{background: color.base}" :data-color="color.base">
+        <div class="color-option" v-for="color in colors" :style="{background: color.base}" :data-color="color.base" @click="setColor(color.base)">
         </div>
       </div>
     </div>
@@ -10,8 +10,11 @@
 </template>
 
 <script>
+import { EventBus } from '../Events.js';
+
 export default {
   name: 'ColorMenu',
+  props: ['subMenuCat'],
   data () {
     return {
       colors: [
@@ -55,7 +58,9 @@ export default {
           name: 'Greens',
           variants: ['#A5D6A7', '#66BB6A', '#43A047', '#2E7D32', '#1B5E20']
         },
-      ]
+      ],
+      colorCat: '',
+      colorSelected: ''
     }
   },
   mounted: function() {
@@ -65,10 +70,19 @@ export default {
 
   },
   watch: {
-
+    subMenuCat: function() {
+      this.colorCat = this.subMenuCat;
+    }
   },
   methods: {
+    setColor: function(color) {
+      this.colorSelected = color;
+      // console.log('selected', this.colorSelected);
+      // console.log('cat', this.subMenuCat);
 
+      // Emit event to EventBus (subMenuCat and colorSelected as one string)
+      EventBus.$emit('catAndColor', this.subMenuCat + ' ' + this.colorSelected);
+    }
   }
 }
 </script>

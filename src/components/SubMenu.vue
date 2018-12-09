@@ -74,7 +74,7 @@ export default {
 
       for (var i=0; i<this.catOptions.length; i++) {
         if (this.catOptions[i].name == cat) {
-          console.log('name', cat);
+          // console.log('name', cat);
           this.menuItems = [];
           for (var k=0; k<this.catOptions[i].items.length; k++) {
             this.menuItems.push(this.catOptions[i].items[k]);

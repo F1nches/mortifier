@@ -10,6 +10,7 @@ import CharacterSet from '@/components/CharacterSet';
 import Canvas from '@/components/Canvas';
 import MainMenu from '@/components/MainMenu';
 
+import { EventBus } from '../Events.js';
 
 export default {
   name: 'Home',
@@ -20,8 +21,12 @@ export default {
   },
   data () {
     return {
+      catAndColorSelected: '',
 
     }
+  },
+  mounted: function() {
+
   }
 }
 
