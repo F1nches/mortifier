@@ -10,6 +10,7 @@ import CharacterSet from '@/components/CharacterSet';
 import Canvas from '@/components/Canvas';
 import MainMenu from '@/components/MainMenu';
 
+
 export default {
   name: 'Home',
   components: {
